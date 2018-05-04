@@ -1,0 +1,12 @@
+//export
+module.exports = <function name>
+//import
+var name = require('<relative path to file>')
+
+
+HTTP status ranges in a nutshell:
+1xx: hold on
+2xx: here you go
+3xx: go away
+4xx: you messed up
+5xx: I messed up
