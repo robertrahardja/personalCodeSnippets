@@ -1,0 +1,3 @@
+Javascript:
+
+Lexical scope cares where a function was declared, but dynamic scope cares where a function was called from.
