@@ -1,0 +1,31 @@
+
+//connecting to Web3
+var Web3 = require('web3');
+// create an instance of web3 using the HTTP provider.
+// NOTE in mist web3 is already available, so check first if it's available before instantiating
+var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+
+//connecting to mysql
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "password",
+  database: "test"
+});
+//mysql interaction
+con.connect (function(err) {
+  if (err) throw err;
+  console.log("connected");
+  let sql = "SELECT * FROM tryGuy";
+  con.query(sql, function (err, result, fields){
+    if (err) throw err;
+    for (let i in result) {
+      console.log("Result: " + result[i].firstName + " "  + result[i].lastName );
+    }
+  });
+});
+
+//Web3 JavaScript app API for 0.2x.x from https://github.com/ethereum/wiki/wiki/JavaScript-API
+var testBalance = web3.eth.getBalance("0x9D124Fd181a0A4fF518796872aeA526432452b34").then(console.log);
